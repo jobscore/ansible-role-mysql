@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Eric Magalhães
-  description: An Ansible role for installing MySQL in an ubuntu box
+  description: An Ansible role for installing MySQL from source in an Ubuntu box
   company: JobScore
   license: license (MIT)
 

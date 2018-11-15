@@ -37,7 +37,7 @@
     - skip_ansible_lint
 
 - name: Ensure mysql is started and enabled
-  serice:
+  service:
     name: "{{ mysql_service_name }}"
     state: started
     enabled: true

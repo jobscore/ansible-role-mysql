@@ -1,10 +1,12 @@
+---
+
 language: python
 services: docker
 before_script:
-- pip install pipenv
-- pipenv install --dev --system
+  - pip install pipenv
+  - pipenv install --dev --system
 script:
-- molecule test
+  - molecule test
 notifications:
   email: false
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
