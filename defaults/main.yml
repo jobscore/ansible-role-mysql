@@ -14,9 +14,11 @@ mysql_local_user: mysql
 mysql_path: /usr/local/mysql
 mysql_data_dir: /var/mysql/data
 
+tmp_path: /tmp/mysql
+
+# Extra arguments for passing while building the source files.
 # See https://dev.mysql.com/doc/refman/8.0/en/source-configuration-options.html
+# for reference
 cmake_extra_args: >
   -DBUILD_CONFIG=mysql_release -DDEFAULT_CHARSET=utf8
   -DDEFAULT_COLLATION=utf8_general_ci
-
-tmp_path: /tmp/mysql
