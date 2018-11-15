@@ -6,7 +6,7 @@ before_script:
   - pip install pipenv
   - pipenv install --dev --system
 script:
-  - molecule test
+  - travis_wait 40 molecule test
 notifications:
   email: false
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

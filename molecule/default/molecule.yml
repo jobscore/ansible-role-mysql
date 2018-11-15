@@ -2,14 +2,18 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: vagrant
+  provider:
+    name: virtualbox
 lint:
   name: yamllint
 platforms:
   - name: xenial
-    image: ubuntu:xenial
+    box: ubuntu/xenial64
+    provision: true
   - name: bionic
-    image: ubuntu:bionic
+    box: ubuntu/bionic64
+    provision: true
 provisioner:
   name: ansible
   lint:

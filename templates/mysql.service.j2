@@ -1,0 +1,21 @@
+[Unit]
+Description=MySQL Server
+Documentation=man:mysqld({{ mysql_version }})
+Documentation=http://dev.mysql.com/doc/refman/en/using-systemd.html
+After=network.target
+After=syslog.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+User={{ mysql_local_user }}
+Group={{ mysql_local_group}}
+Type=notify
+TimeoutSec=0
+PIDFile={{ mysql_pid_file }}
+ExecStart={{ mysql_path }}/bin/mysqld --daemonize --pid-file={{ mysql_pid_file }} $MYSQLD_OPTS
+Environment=MYSQLD_PARENT_PID=1
+Restart=on-failure
+RestartPreventExitStatus=1
+PrivateTmp=false

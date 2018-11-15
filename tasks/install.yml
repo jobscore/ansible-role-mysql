@@ -8,14 +8,6 @@
     depth: 1
     version: "mysql-{{ mysql_version }}"
 
-- name: Ensure the mysql folder is created
-  file:
-    path: "{{ mysql_path }}"
-    state: directory
-    mode: 0755
-    owner: "{{ mysql_local_user }}"
-    group: "{{ mysql_local_group }}"
-
 - name: Ensure build folder is present
   file:
     path: "{{ tmp_path }}/build"
@@ -25,6 +17,7 @@
   command: "{{ item }}"
   args:
     chdir: "{{ tmp_path }}/build"
+    creates: "{{ mysql_path }}"
   with_items:
     - >
       cmake .. -DCMAKE_INSTALL_PREFIX={{ mysql_path }}
@@ -32,12 +25,23 @@
       -DMYSQL_DATADIR={{ mysql_data_dir }} -DMYSQL_TCP_PORT={{ mysql_port }}
       -DMYSQL_UNIX_ADDR={{ mysql_unix_address }}
       {{ cmake_extra_args }}
-    - make VERBOSE=1
-  tags:
-    - skip_ansible_lint
+    - make
+    - make install
 
-- name: Ensure mysql is started and enabled
-  service:
+- name: Create mysql service
+  template:
+    src: "mysql.service.j2"
+    dest: "/etc/systemd/system/{{ mysql_service_name }}.service"
+    mode: 0664
+
+- name: Add mysql bin dir to system-wide $PATH.
+  copy:
+    dest: /etc/profile.d/mysql.sh
+    content: 'PATH=$PATH:{{ mysql_path }}/bin'
+
+- name: Ensure mysql service is enabled and started
+  systemd:
+    daemon_reload: true
     name: "{{ mysql_service_name }}"
     state: started
     enabled: true

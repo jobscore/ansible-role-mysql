@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b794f7bfd16cd8a604681836f0d7191ce3446c3ef4cc4938ca12ffba2869a57e"
+            "sha256": "ffc885ca49bb5ffb1b8277003ed23e53f0d3df09c1c11b45e59fe50c238ce35c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,10 +18,10 @@
     "default": {
         "ansible": {
             "hashes": [
-                "sha256:003ae1df874cd3a2c12454dd8f073cecc03b8a10508d898367a3f134139fea82"
+                "sha256:e7953472347fcc6dca10839111b576a9f790e00056344f2dcf448e6c452fe939"
             ],
             "index": "pypi",
-            "version": "==2.6.7"
+            "version": "==2.7.1"
         },
         "ansible-lint": {
             "hashes": [
@@ -69,13 +69,6 @@
             ],
             "markers": "python_version == '2.7'",
             "version": "==1.5"
-        },
-        "backports.ssl-match-hostname": {
-            "hashes": [
-                "sha256:502ad98707319f4a51fa2ca1c677bd659008d27ded9f6380c79e8932e38dcdf2"
-            ],
-            "markers": "python_version < '3.5'",
-            "version": "==3.5.0.1"
         },
         "bcrypt": {
             "hashes": [
@@ -238,21 +231,6 @@
             ],
             "version": "==2.4.1"
         },
-        "docker-py": {
-            "hashes": [
-                "sha256:35b506e95861914fa5ad57a6707e3217b4082843b883be246190f57013948aba",
-                "sha256:4c2a75875764d38d67f87bc7d03f7443a3895704efc57962bdf6500b8d4bc415"
-            ],
-            "index": "pypi",
-            "version": "==1.10.6"
-        },
-        "docker-pycreds": {
-            "hashes": [
-                "sha256:0a941b290764ea7286bd77f54c0ace43b86a8acd6eb9ead3de9840af52384079",
-                "sha256:8b0e956c8d206f832b06aa93a710ba2c3bcbacb5a314449c040b0b814355bbff"
-            ],
-            "version": "==0.3.0"
-        },
         "enum34": {
             "hashes": [
                 "sha256:2d81cbbe0e73112bdfe6ef8576f2238f2ba27dd0d55752a776c41d38b7da2850",
@@ -369,6 +347,9 @@
             "version": "==0.6.1"
         },
         "molecule": {
+            "extras": [
+                "vagrant"
+            ],
             "hashes": [
                 "sha256:23b1b30b37998f0eb747dc06a602df59157fe78d3f6a9882dea9271d8d37cdee",
                 "sha256:59734fa4487e1d4b9be6f5a3c1192ac76445670bc44ee172f23ac122d90412e3",
@@ -625,13 +606,6 @@
                 "sha256:de9529817c93f27c8ccbfead6985011db27bd0ddfcdb2d86f3f663385c6a9c22"
             ],
             "version": "==1.24.1"
-        },
-        "websocket-client": {
-            "hashes": [
-                "sha256:8c8bf2d4f800c3ed952df206b18c28f7070d9e3dcbd6ca6291127574f57ee786",
-                "sha256:e51562c91ddb8148e791f0155fdb01325d99bb52c4cdbb291aee7a3563fd0849"
-            ],
-            "version": "==0.54.0"
         },
         "whichcraft": {
             "hashes": [

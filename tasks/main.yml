@@ -1,5 +1,12 @@
 ---
 # tasks file for mysql
 
+- name: Check is mysql is installed
+  command: "mysql --version"
+  register: mysql_check
+  changed_when: false
+  ignore_errors: true
+
+
 - include: prepare.yml
 - include: install.yml

@@ -6,7 +6,8 @@ name = "pypi"
 [packages]
 molecule = "*"
 ansible = "*"
-docker-py = "*"
+'molecule[vagrant]' = "*"
+
 
 [dev-packages]
 
