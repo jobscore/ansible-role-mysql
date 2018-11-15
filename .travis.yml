@@ -1,10 +1,13 @@
 language: python
 services: docker
 before_script:
-  - pip install pipenv
-  - pipenv install --dev --system
+- pip install pipenv
+- pipenv install --dev --system
 script:
-  - molecule test
+- molecule test
 notifications:
   email: false
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  slack:
+    rooms:
+      secure: UH9fGkhbO3RnxIF5BxEssXcMtc1zMuTOgFcykyHrYQWuUpZb3EfYXi91umNu/pD2zAUzhDPQmkBhHUkltLu53ojnDMT5sL3/AmfmfdOR7Pb/Yb+cDw+hSIoDzwbTIKqPOdYjubkGQHeaGSmnaw/B2SKv0Lx0cKw2GnWXJAhZh9aVtvbayYSYl2yYi5UpK/BZLhI+2uXCKzuql+X0vs+T1/t6KMOmr2fTI+Rbv8RAcIJcwbSsCG4z6DAuAx58XZlsUBF+w0iY8gF6cLUv6Pp/+6D3dyh93BiOmulLOSQmy2Oxf/XNgyzOvMFHp7hrjpKsExdQdudTsEORIGAxaA4JFWDM9cjYW1JmeFLc1bmQAKQyfRGWdATIOvbxeZqh/8uh9O9+RKDGcxQHKQenrjeVyecsS640uj8NA4EfinT2hQTTg4xkgHJnabP+NQlUSkSDTUtH+zo0sho57E63q6YOLefjwqOBGF2QGSoS4ZGu2z9EBxlSuksogIfouNp34ZSnPLasXkQFPo84LZElfaQHVC1p4hZYwjV4iVAaJoUHFaXnyAE1aMy1ldQfH7BiYABkyHuQ8rGwp/pPOyH8NEfpbW3RMA2DgPEjwTHRtIpPcs3K4EdnG5LaeomiC8xhJNHz0gZJp1R/jfXL/VuKA23rkxnRcepueygE0FpGuVmIR9Q=
