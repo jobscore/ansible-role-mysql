@@ -1,0 +1,31 @@
+---
+
+- name: Ensure APT cache is udpated
+  apt:
+    update_cache: true
+    cache_valid_time: 600
+
+- name: Ensure needed APT packages are present
+  apt:
+    name:
+      - build-essential
+      - libncurses5-dev
+      - libncursesw5-dev
+      - cmake
+      - bison
+      - gcc
+      - g++
+      - git-core
+      - libaio-dev
+    state: present
+
+- name: Ensure mysql local group is present
+  group:
+    name: "{{ mysql_local_group }}"
+
+- name: Ensure mysql local user is present
+  user:
+    name: "{{ mysql_local_user }}"
+    groups: "{{ mysql_local_group }}"
+    shell: '/bin/bash'
+    create_home: true

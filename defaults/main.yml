@@ -1,0 +1,21 @@
+---
+# defaults file for mysql
+mysql_version: '5.6.42'
+mysql_db_user: root
+mysql_password: password
+mysql_port: '3306'
+mysql_unix_address: /tmp/mysql.sock
+
+mysql_service_name: mysql
+mysql_local_group: mysql
+mysql_local_user: mysql
+
+mysql_path: /usr/local/mysql
+mysql_data_dir: /var/mysql/data
+
+# See https://dev.mysql.com/doc/refman/8.0/en/source-configuration-options.html
+cmake_extra_args: >
+  -DBUILD_CONFIG=mysql_release -DDEFAULT_CHARSET=utf8
+  -DDEFAULT_COLLATION=utf8_general_ci
+
+tmp_path: /tmp/mysql

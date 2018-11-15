@@ -1,0 +1,37 @@
+---
+# tasks file for mysql
+
+- name: Get mysql source code
+  git:
+    repo: https://github.com/mysql/mysql-server.git
+    dest: "{{ tmp_path }}"
+    depth: 1
+    version: "mysql-{{ mysql_version }}"
+
+- name: Ensure the mysql folder is created
+  file:
+    path: "{{ mysql_path }}"
+    state: directory
+    mode: 0755
+    owner: "{{ mysql_local_user }}"
+    group: "{{ mysql_local_group }}"
+
+- name: Ensure build folder is present
+  file:
+    path: "{{ tmp_path }}/build"
+    state: directory
+
+- name: Install mysql
+  command: "{{ item }}"
+  args:
+    chdir: "{{ tmp_path }}/build"
+  with_items:
+    - >
+      cmake .. -DCMAKE_INSTALL_PREFIX={{ mysql_path }}
+      -DWITH_SYSTEMD=1 -DSYSTEMD_SERVICE_NAME={{ mysql_service_name }}
+      -DMYSQL_DATADIR={{ mysql_data_dir }} -DMYSQL_TCP_PORT={{ mysql_port }}
+      -DMYSQL_UNIX_ADDR={{ mysql_unix_address }}
+      {{ cmake_extra_args }}
+    - make VERBOSE=1
+  tags:
+    - skip_ansible_lint
